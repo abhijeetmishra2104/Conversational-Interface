@@ -1,26 +1,23 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const mongoose = require('mongoose');
+
 const jwt = require("jsonwebtoken");
+const z = require("zod");
 const jwtPassword = "Code_Soc";
 
 const app = express();
-const port = 3000;
-// Connect to MongoDB database using Mongoose.
-async function main() {
-    await mongoose.connect("mongodb+srv://abhijeetmishra2104:Abhijeetmis%402104@cluster0.pnpjyu0.mongodb.net/");
-}
-const user = mongoose.model('Users', {
-    Name: String,
-    username: String,
-    password: String
-});
+const port = 4000;
+const nameSchema = z.string();
+const usernameSchema = z.string().email({message: "Invalid email address"});
+const passwordSchema = z.string().min(5, { message: "Must be 8 or more characters long" });;
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
     res.render("login.ejs");
+
 });
 
 app.post("/signup", async function (req, res) {
@@ -28,19 +25,6 @@ app.post("/signup", async function (req, res) {
     const username = req.body.username;
     const Name = req.body.Name;
     const password = req.body.password;
-    const userExists = await user.findOne({
-        username: username
-    })
-    if (userExists) {
-        return res.send("User name already exists");
-    }
-    const newUser = new user({
-        Name: Name,
-        username: username,
-        password: password
-    });
-    newUser.save();
-    res.json("User created successfully");
     const value = {
         Name: Name,
         username: username,
@@ -55,8 +39,11 @@ app.post("/login", (req, res) => {
     if (username == "admin" && password == "123") {
         res.render("homePage.ejs");
     }
+    else{
+        res.send("bsdk");
+    }
 });
 
 app.listen(port, () => {
-    console.log("server is running on port 3000");
+    console.log(`server is running on port ${port}`);
 });
