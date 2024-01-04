@@ -1,16 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    /* font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif; */
+}
+body{
+    /* background-color: rgb(41, 41, 41);
+     */
+     background: linear-gradient(90deg, rgba(2,0,36,1) 10%, rgb(0, 44, 58) 50%, rgba(0,212,255,1) 100%);
+}
 form{
     background: rgb(2,0,36);
-background: linear-gradient(47deg, rgba(2,0,36,1) 0%, rgba(0,140,186,1) 31%, rgba(0,212,255,1) 100%);
+    /* background: linear-gradient(47deg, rgba(2,0,36,1) 0%, rgba(0,140,186,1) 31%, rgba(0,212,255,1) 100%); */
+    background: linear-gradient(47deg, rgba(2,0,36,1) 0%, rgb(0, 44, 58) 40%, rgba(0,212,255,1) 100%);
+    box-shadow: 0 4px 8px 0 rgba(0,212,255, 0.5), 0 6px 20px 0 rgba(0,212,255, 0.5);
     width: 300px;
     height: 300px;
-    margin: auto;
+    margin: 100px;
     margin-bottom: auto;
     display: grid;
     place-items: center;
-    border-radius: 40px;
+    border-radius: 5px;
+    transition: 0.5s;
 }
 button {
-    background-color: #ca7670; 
+    width: 80%;
+    background-color: rgba(0,212,255,1); 
     border: none;
     color: white;
     padding: 15px 32px;
@@ -18,8 +35,18 @@ button {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    border-radius: 14px;
+    border-radius: 5px;
+    transition: 0.5s;
   }
+button:hover{
+    background-color: #fff;
+    color: rgba(0,212,255,1);
+    box-shadow: 0 4px 8px 0 rgba(0,212,255, 0.2), 0 6px 20px 0 rgba(0,212,255, 0.19);
+}
+    form:hover{
+        box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.5), 0 6px 20px 0 rgba(255, 255, 255, 0.5);
+    }
+
 input{
     padding: 6px 12px;
     font-size: 16px;
@@ -34,7 +61,7 @@ input{
     transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
 }
 h2{
-    color: #000000;
+    color: #fff;
     font-weight: bolder;
 }
     
